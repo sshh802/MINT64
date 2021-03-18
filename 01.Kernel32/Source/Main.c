@@ -10,7 +10,7 @@ void Main(void)
 
 	kPrintString(0,3,"C Language Kernel Started!................[Pass]");
 
-	kPrintString(0, 4, "Minimum Memory Size Check.................[    ]");
+	kPrintString(0, 4, "Minimum Memory Size Check..............[    ]");
 	if(kIsMemoryEnough()==FALSE)
 	{
 		kPrintString(45,4, "Fail");
