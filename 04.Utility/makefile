@@ -12,4 +12,4 @@ ImageMaker:
 	@echo 
 
 clean:
-	make -c 00.ImageMaker clean
+	make -C 00.ImageMaker clean
