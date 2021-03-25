@@ -10,7 +10,7 @@
 #define BYTESOFSECTOR 512
 
 int AdjustInSectorSize(int iFd, int iSourceSize);
-void WriteKernelInformation(int iTargetFd, int iKernelSectorCount,int iKernel32SectorCount);
+void WriteKernelInformation(int iTargetFd, int iTotalKernelSectorCount,int iKernel32SectorCount);
 int CopyFile(int iSourceFd, int iTargetFd);
 
 int main(int argc, char* argv[])
