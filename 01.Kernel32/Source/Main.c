@@ -53,6 +53,10 @@ void Main(void)
 	kPrintString(0, 8, "64bit Mode Support Check....................[    ]");
 	if(dwEDX & (1 << 29))
 	{
+		kPrintString(45, 8,"Pass");
+	}
+	else
+	{
 		kPrintString(45, 8, "Fail");
 		kPrintString(0, 9, "This processor does not support 64bit mode !");
 		while(1);
