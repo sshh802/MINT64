@@ -165,5 +165,4 @@ TRACKNUMBER:            db  0x00
 times 510 - ( $ - $$ )    db    0x00   
 
 db 0x55          
-db 0xAA         
-               
+db 0xAA        
