@@ -12,9 +12,9 @@ prepare:
 	mkdir -p $(OBJECTDIRECTORY)
 
 dep:
-	@echo === Make Dependancy File ===
-	make -C $(OBJECTDIRECTORY) -f ../makefile InternalDependancy
-	@echo === Dependancy Search Complete ===
+	@echo === Make Dependency File ===
+	make -C $(OBJECTDIRECTORY) -f ../makefile InternalDependency
+	@echo === Dependency Search Complete ===
 
 ExecuteInternalBuild: dep
 	make -C $(OBJECTDIRECTORY) -f ../makefile Kernel64.elf
@@ -43,13 +43,13 @@ $(ENTRYPOINTOBJECTFILE): $(ENTRYPOINTSOURCEFILE)
 %.o: ../$(SOURCEDIRECTORY)/%.asm
 	$(NASM64) -o $@ $<
 
-InternalDependancy:
-	$(GCC64) -MM $(CSOURCEFILES) > Dependancy.dep
+InternalDependency:
+	$(GCC64) -MM $(CSOURCEFILES) > Dependency.dep
 
 Kernel64.elf: $(ENTRYPOINTOBJECTFILE) $(COBJECTFILES) $(ASSEMBLYOBJECTFILES)
 	$(LD64) -o $@ $^
 
-ifeq (Dependancy.dep, $(wildcard Dependancy.dep))
-include Dependancy.dep
+ifeq (Dependency.dep, $(wildcard Dependency.dep))
+include Dependency.dep
 endif
 
