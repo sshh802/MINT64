@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
 	printf("[INFO] %s size = [%d] and sector count = [%d]\n", argv[3], iSourceSize, iKernel64SectorCount);
 
 	printf("[INFO] Start to write kernel information\n");
-	WriteKernelInformation(iTargetFd, iKernel32SectorCount,iKernel64SectorCount);
+	WriteKernelInformation(iTargetFd, iKernel32SectorCount+iKernel64SectorCount,iKernel32SectorCount);
 	printf("[INFO] Image file create complete\n");
 
 	close(iTargetFd);
