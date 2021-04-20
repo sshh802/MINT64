@@ -10,6 +10,8 @@ void Main(void)
 	BYTE bFlags;
 	BYTE bTemp;
 	int i =0;
+	int line=13;
+	int lineStack[80]={0,};
 
 	kPrintString(0,10,"Switch To IA-32e Mode Success!");
 
@@ -38,7 +40,31 @@ void Main(void)
 			{
 				if(bFlags & KEY_FLAGS_DOWN)
 				{
-					kPrintString(i++, 13, vcTemp);
+					if((bTemp == 58) || (bTemp==42) || (bTemp==54) || (bTemp==69) || (bTemp==70))
+					{
+						;
+					}
+					else if(bTemp == 0x1C) //enter
+					{
+						kPrintString(0, ++line, vcTemp);
+						i=0;
+					}
+					else if(bTemp == 0x39) //space
+					{
+						kPrintString(i++, line, " ");
+						lineStack[line]=i;
+					}
+					else if(bTemp == 0x0E) //Backspace
+					{
+						if(i<0)
+							i=lineStack[--line];
+						kPrintString(i--, line, " ");
+					}
+					else
+					{
+						kPrintString(i++, line, vcTemp);
+						lineStack[line]=i;
+					}
 				}
 			}
 
