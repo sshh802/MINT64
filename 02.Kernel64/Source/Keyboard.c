@@ -39,7 +39,7 @@ BOOL kActivateKeyboard(void)
 			if(kIsOutputBufferFull()==TRUE)
 				break;
 		}
-		if(kInPortByte(0x60) == 0xF4)
+		if(kInPortByte(0x60) == 0xFA)
 			return TRUE;
 	}
 	return FALSE;
