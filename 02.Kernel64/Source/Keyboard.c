@@ -47,7 +47,7 @@ BOOL kActivateKeyboard(void)
 
 BYTE kGetKeyboardScanCode(void)
 {
-	while(kIsOutputBufferFull()==TRUE)
+	while(kIsOutputBufferFull()==FALSE)
 	{
 		;
 	}
@@ -278,7 +278,7 @@ BOOL kIsNumberPadScanCode(BYTE bScanCode)
 BOOL kIsUseCombinedCode(BYTE bScanCode)
 {
 	BYTE bDownScanCode;
-	BOOL bUseCombinedKey = FALSE;
+	BOOL bUseCombinedKey;
 
 	bDownScanCode = bScanCode & 0x7F;
 
@@ -293,7 +293,7 @@ BOOL kIsUseCombinedCode(BYTE bScanCode)
 			bUseCombinedKey = FALSE;
 		}
 	}
-	else if( (kIsNumberOrSymbolScanCode(bDownScanCode) == TRUE) && (gs_stKeyboardManager.bExtendedCodeIn == FALSE))
+	else if( kIsNumberOrSymbolScanCode(bDownScanCode)==TRUE)
 	{
 		if(gs_stKeyboardManager.bShiftDown == TRUE)
 		{
@@ -304,7 +304,7 @@ BOOL kIsUseCombinedCode(BYTE bScanCode)
 			bUseCombinedKey = FALSE;
 		}
 	}
-	else if(kIsNumberPadScanCode(bDownScanCode) == TRUE)
+	else if((kIsNumberPadScanCode(bDownScanCode) == TRUE) && (gs_stKeyboardManager.bExtendedCodeIn == FALSE))
 	{
 		if(gs_stKeyboardManager.bNumLockOn == TRUE)
 		{
